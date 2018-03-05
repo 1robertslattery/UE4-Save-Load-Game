@@ -26,12 +26,13 @@ ACheckpointTrigger::ACheckpointTrigger()
 void ACheckpointTrigger::BeginPlay()
 {
 	Super::BeginPlay();
-	FindDonuts();
+	FindDonut(DonutOneInWorld, FName(TEXT("DountOne")));
+	FindDonut(DonutTwoInWorld, FName(TEXT("DountTwo")));
 	this->SetActorHiddenInGame(false);
 	GetCollisionComponent()->SetHiddenInGame(false);
 }
 
-void ACheckpointTrigger::FindDonuts()
+void ACheckpointTrigger::FindDonut(class ADonut* WorldDonut, const FName Name)
 {
 	class UWorld* const world = GetWorld();
 
@@ -43,27 +44,11 @@ void ACheckpointTrigger::FindDonuts()
 
 			if (FoundDonut != nullptr)
 			{
-				if (FoundDonut->ActorHasTag(FName(TEXT("DonutOne"))))
+				if (FoundDonut->ActorHasTag(Name))
 				{
-					if (DonutOneInWorld != FoundDonut)
+					if (WorldDonut != FoundDonut)
 					{
-						DonutOneInWorld = FoundDonut;
-					}
-				}
-			}
-		}
-
-		for (TActorIterator<ADonut> ActorItr_2(world); ActorItr_2; ++ActorItr_2)
-		{
-			class ADonut* FoundDonut_2 = *ActorItr_2;
-
-			if (FoundDonut_2 != nullptr)
-			{
-				if (FoundDonut_2->ActorHasTag(FName(TEXT("DonutTwo"))))
-				{
-					if (DonutTwoInWorld != FoundDonut_2)
-					{
-						DonutTwoInWorld = FoundDonut_2;
+						WorldDonut = FoundDonut;
 					}
 				}
 			}
