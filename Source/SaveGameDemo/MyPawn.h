@@ -27,7 +27,7 @@ class SAVEGAMEDEMO_API AMyPawn : public APawn
 private:
 
 	// Find donuts we are using
-	void FindDonuts();
+	void FindDonut(class ADonut* WorldDonut, const FName Name);
 
 	// Jump Variable
 	bool isJumping;
