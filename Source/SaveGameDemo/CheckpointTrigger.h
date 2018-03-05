@@ -14,7 +14,7 @@ class SAVEGAMEDEMO_API ACheckpointTrigger : public ATriggerBox
 private:
 
 	// Find actors we are using
-	void FindDonuts();
+	void FindDonut(class ADonut* WorldDonut, const FName Name);
 	
 	// Checkpoint Method
 	void SetNewCheckpoint();
