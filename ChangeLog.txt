@@ -1,0 +1,5 @@
+2018-01-30: v1.0:
++ Initial Upload
+
+2018-03-05: v1.1:
++ Improved FindDonuts() in CheckpointTrigger and MyPawn to make it easier to iterate through many Actors.
